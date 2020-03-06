@@ -17,16 +17,17 @@
       "browser": true,
       "node": true
     },
-    "rules": {   
-      "react/jsx-uses-react": "error",   
-      "react/jsx-uses-vars": "error" 
+    "rules": {
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error"
     }
   },
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "server": "nodemon ./server/index.js"
+    "server": "nodemon ./server/index.js",
+    "datBase": ""
   },
   "keywords": [],
   "author": "",
@@ -56,6 +57,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.8.5",
+    "pg": "^7.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }

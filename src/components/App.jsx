@@ -11,13 +11,28 @@ class App extends React.Component {
     this.state = {
       filter: 'None',
       bugs: exampleData,
+      currentView: exampleData,
     };
     this.filterHandler = this.filterHandler.bind(this);
   }
 
+// update the filter handler to sort by bug threat level
+// filterHandler should update state.filter to whatever is selected from the dropdown by passing up target.value
+// the render method should only render bugs whose threat level matches 
+
   filterHandler(filter) {
-    this.setState({ filter });
+    let newView;
+    if (filter === 'None') {
+      newView = exampleData
+    } else {
+      newView = this.state.bugs.slice().filter(bug => bug.threatLevel === filter);
+    }
+    this.setState({ currentView: newView, filter });  
   }
+
+  
+
+// it works but it is one behind on the render, there is an issue somewhere
 
   render() {
     return (
@@ -25,7 +40,7 @@ class App extends React.Component {
         <Nav
           filterHandler={this.filterHandler}
         />
-        {this.state.bugs.map((bug) => (
+        {this.state.currentView.map((bug) => (
           <BugTile
             bugName={bug.bugName}
             bugDescription={bug.bugDescription}
